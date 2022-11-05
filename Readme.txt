@@ -6,7 +6,8 @@ Special thanks to Gabby Skelton for the static signup inspiration, you can see m
 
 TODO:
 - make signup view
-- authenticate login/signup via firebase and report using alerts
+✓ authenticate login/signup via firebase and report using alerts
+- add name, birthday, email, pass, confirm pass to signup
 - make the session credentials appear in url
 - make the session credentials consistent between pages
 - make booking auto populate some user info
