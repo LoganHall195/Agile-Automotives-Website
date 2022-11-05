@@ -1,4 +1,4 @@
-This is the website link: https://loganhall195.github.io/SE-Group7/
+This is the website link: https://loganhall195.github.io/SE-Group7-Staging/
 
 Special thanks to Gabby Skelton for the static signup inspiration, you can see more of her projects here: https://github.com/gabby-skelton
 
