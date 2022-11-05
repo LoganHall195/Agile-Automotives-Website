@@ -2,15 +2,17 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCybmXAUWgGDCMNQWvcRdaMgE31I1GkF8M",
-  authDomain: "log-in-authentication-ac1b6.firebaseapp.com",
-  projectId: "log-in-authentication-ac1b6",
-  storageBucket: "log-in-authentication-ac1b6.appspot.com",
-  messagingSenderId: "735126972855",
-  appId: "1:735126972855:web:b26c16bd1de14bf361e032",
-  measurementId: "G-3GKSESXV7S"
+cconst firebaseConfig = {
+  apiKey: "AIzaSyAKGYcsh-b050TlfBEZSoPdAhCD_P5zxC8",
+  authDomain: "softwaree-group7.firebaseapp.com",
+  projectId: "softwaree-group7",
+  storageBucket: "softwaree-group7.appspot.com",
+  messagingSenderId: "983507508483",
+  appId: "1:983507508483:web:d9ca8d329ac6142443dd36",
+  measurementId: "G-SQ2B4TL68L",
+  databaseURL: "https://softwaree-group7-default-rtdb.firebaseio.com",
 };
+
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
