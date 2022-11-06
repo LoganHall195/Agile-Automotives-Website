@@ -9,15 +9,19 @@ const auth = getAuth(app);
 const carName1 = document.getElementById("Car1name");
 const database = ref(getDatabase());
 
-function carName1(){
-    get(child(database, `/Cars/Car1/carName`)).then((snapshot) => {
-      if (snapshot.exists()) {
-        window.alert(snapshot.val());
+
+get(child(database, `/Cars/Car1/carName`)).then((snapshot) => {
+    if (snapshot.exists()) {
+        html = snapshot.val();
       } else {
-        window.alert("No data available");
+        html = "No data available";
       }
     }).catch((error) => {
       console.error(error);
     });
-  }
+
+
+  $(document).ready(function() {
+    document.getElementById("Car1name").outerHTML = html
+});
   
