@@ -180,8 +180,8 @@
                             <thead>
                                 <th>carName</th>
                         </thead>
-                        <tbody id = "Car1name">
-                    
+                        <tbody id="Car1name">
+                       
                     </tbody>
                     </table>
                         
@@ -444,21 +444,22 @@
     <!-- Template Javascript -->
     <script id="CarsScript">
         var firebaseConfig = {
-    apiKey: "AIzaSyAKGYcsh-b050TlfBEZSoPdAhCD_P5zxC8",
-    authDomain: "softwaree-group7.firebaseapp.com",
-    projectId: "softwaree-group7",
-    storageBucket: "softwaree-group7.appspot.com",
-    messagingSenderId: "983507508483",
-    appId: "1:983507508483:web:d9ca8d329ac6142443dd36",
-    measurementId: "G-SQ2B4TL68L",
-    databaseURL: "https://softwaree-group7-default-rtdb.firebaseio.com",
-  };
+        apiKey: "AIzaSyAKGYcsh-b050TlfBEZSoPdAhCD_P5zxC8",
+        authDomain: "softwaree-group7.firebaseapp.com",
+        projectId: "softwaree-group7",
+        storageBucket: "softwaree-group7.appspot.com",
+        messagingSenderId: "983507508483",
+        appId: "1:983507508483:web:d9ca8d329ac6142443dd36",
+        measurementId: "G-SQ2B4TL68L",
+        databaseURL: "https://softwaree-group7-default-rtdb.firebaseio.com",
+    };
     firebase.initializeApp(firebaseConfig);
     function SelectCarData(){
-        firebase.database().ref('Cars').once('Car1', 
+        firebase.database().ref('Cars/Car1').once(
         function(AllRecords){
             AllRecords.forEach(
                 function(CurrentRecord){
+                    
                     var carNm = CurrentRecord.val().carName;
                     AddCar(carNm);
                 }
