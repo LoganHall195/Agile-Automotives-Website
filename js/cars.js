@@ -22,6 +22,7 @@ get(child(database, `/Cars/Car1/carName`)).then((snapshot) => {
 
 
   $(document).ready(function() {
+    html = "Hello There!";
     document.getElementById("Car1name").outerHTML = html
 });
   
