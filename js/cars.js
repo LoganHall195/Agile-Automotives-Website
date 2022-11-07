@@ -7,7 +7,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const carName1 = document.getElementById("Car1name");
-const database = ref(getDatabase());
+const database = getDatabase(app);
 
 const firebaseConfig = {
     apiKey: "AIzaSyAKGYcsh-b050TlfBEZSoPdAhCD_P5zxC8",
@@ -20,7 +20,7 @@ const firebaseConfig = {
     databaseURL: "https://softwaree-group7-default-rtdb.firebaseio.com",
   };
 
-  const carName = query(ref(db, 'Cars'), orderByChild('Car1/carName'));
+  const carName = query(ref(database, 'Cars'), orderByChild('Car1/carName'));
 /*get(child(database, `/Cars/Car1/carName`)).then((snapshot) => {
     if (snapshot.exists()) {
         html = snapshot.val();
