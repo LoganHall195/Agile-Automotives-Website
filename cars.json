@@ -1,0 +1,17 @@
+{
+    "Car1": {
+      "carName": "Mercedes Benz",
+      "carYear": 2015,
+      "mileage": 14599
+    },
+    "Car2": {
+      "carName": "Audi",
+      "carYear": 2019,
+      "mileage": 1021
+    },
+    "Car3": {
+      "carName": "BMW",
+      "carYear": 2022,
+      "mileage": 10
+    }
+  }

@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-import { getDatabase,ref, child, get } from "firebase/database";
+import { getDatabase,ref, child, get, query, orderByChild  } from "firebase/database";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 const app = initializeApp(firebaseConfig);
@@ -20,7 +20,8 @@ const firebaseConfig = {
     databaseURL: "https://softwaree-group7-default-rtdb.firebaseio.com",
   };
 
-get(child(database, `/Cars/Car1/carName`)).then((snapshot) => {
+  const carName = query(ref(db, 'Cars'), orderByChild('Car1/carName'));
+/*get(child(database, `/Cars/Car1/carName`)).then((snapshot) => {
     if (snapshot.exists()) {
         html = snapshot.val();
       } else {
@@ -31,8 +32,11 @@ get(child(database, `/Cars/Car1/carName`)).then((snapshot) => {
     });
 
 
-  $(document).ready(function() {
+  $
+  */
+ (document).ready(function() {
+     html = carName;
     //html = "Hello There!";
-    document.getElementById("Car1name").outerHTML = html
+   carName1.outerHTML = html
 });
   
