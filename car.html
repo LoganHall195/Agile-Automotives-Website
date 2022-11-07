@@ -175,7 +175,16 @@
                 <div class="col-lg-4 col-md-6 mb-2">
                     <div class="rent-item mb-4">
                         <img class="img-fluid mb-4" src="img/car-rent-1.png" alt="">
-                        <div id = "Car1name" type = "text"></div>
+                        
+                        <table>
+                            <thead>
+                                <th>carName</th>
+                        </thead>
+                        <tbody id = "Car1name">
+                    
+                    </tbody>
+                    </table>
+                        
                         <div class="d-flex justify-content-center mb-4">
                             <div class="px-2">
                                 <i class="fa fa-car text-primary mr-1"></i>
@@ -428,9 +437,47 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
 
     <!-- Template Javascript -->
-    <script type = "module" src = "/js/cars.js"></script>
+    <script id="CarsScript">
+        var firebaseConfig = {
+    apiKey: "AIzaSyAKGYcsh-b050TlfBEZSoPdAhCD_P5zxC8",
+    authDomain: "softwaree-group7.firebaseapp.com",
+    projectId: "softwaree-group7",
+    storageBucket: "softwaree-group7.appspot.com",
+    messagingSenderId: "983507508483",
+    appId: "1:983507508483:web:d9ca8d329ac6142443dd36",
+    measurementId: "G-SQ2B4TL68L",
+    databaseURL: "https://softwaree-group7-default-rtdb.firebaseio.com",
+  };
+    firebase.initializeApp(firebaseConfig);
+    function SelectCarData(){
+        firebase.database().ref('Cars').once('Car1', 
+        function(AllRecords){
+            AllRecords.forEach(
+                function(CurrentRecord){
+                    var carNm = CurrentRecord.val().carName;
+                    AddCar(carNm);
+                }
+            );
+        });
+    }
+    window.onload = SelectCarData;
+    var carName1 = "";
+    function AddCar(carNm){
+        var tbody = document.getElementById('Car1name');
+        var trow = document.createElement('tr');
+        var td1 = document.createElement('td');
+        td1.innerHTML= carNm;
+        trow.appendChild(td1);
+        tbody.appendChild(trow);
+    }
+
+    </script>
+    
     <script src="js/main.js"></script>
     
 </body>

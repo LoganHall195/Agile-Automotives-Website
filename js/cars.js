@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-import { getDatabase,ref, child, get, query, orderByChild  } from "firebase/database";
+import { getDatabase,ref, child, get, query, orderByChild  } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 const app = initializeApp(firebaseConfig);
