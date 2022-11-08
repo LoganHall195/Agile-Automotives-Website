@@ -1,0 +1,76 @@
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <title>Car Lists</title>
+  
+    <!-- INCLUDING JQUERY-->
+      <script src="https://code.jquery.com/jquery-3.5.1.js">
+      </script>
+      <!-- Favicon -->
+      <link href="img/favicon.ico" rel="icon">
+
+      <!-- Google Web Fonts -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+  
+      <!-- Font Awesome -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+  
+      <!-- Libraries Stylesheet -->
+      <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  
+      <!-- Customized Bootstrap Stylesheet -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+  
+      <!-- Template Stylesheet -->
+      <link href="css/style.css" rel="stylesheet">
+</head>
+  
+<body>
+    <section>
+        <!-- TABLE CONSTRUCTION-->
+        <table id='table'>
+  
+            <script>
+                $(document).ready(function () {
+  
+                    // FETCHING DATA FROM JSON FILE
+                    $.getJSON("list.json", function (data) {
+                        var car = '<div id=\"carlist\" style=\"'+data.length*1000+'px; overflow: hidden;\">'; // does nothing
+                        car = '<div class=\"row\"style=\"width:100%;\">';
+                            // ITERATING THROUGH OBJECTS
+                        $.each(data, function (key, value) {
+                            // CONSTRUCTION OF ROWS HAVING
+                            // DATA FROM JSON OBJECT
+
+                            car+= '<div class=\"col-lg-4 col-md-6 mb-2\"><div class=\"rent-item mb-4\" style=\"width:100%;\">'
+                            car+= '<div '
+                            if(value.type=='truck'){
+                                car+='class=\"type_truck\"><tr>'
+                            }else{
+                                car+= '><tr>'
+                            };
+                            
+                            car+="<img class=\"img-fluid mb-4\" src=\""+value.img+"\" alt=\"\">";
+                            car+="<h4 class=\"text-uppercase mb-4\">" + value.manufacturer + " " + value.model + "</h4><br>";
+                            
+                            car+="<li>"+ value.year +"</li>";
+                            car+="<li>"+ value.transmission +"</li>";
+                            car+="<li>"+ value.mileage +"</li><br>";
+                            
+                            car+="<a class=\"btn btn-primary px-3\" href=\"\"> $"+ value.price +"/day</a>";
+  
+                            car += '</tr></div></div></div>';
+                        });
+                          
+                        //INSERTING ROWS INTO TABLE 
+                        $('#table').append(car);
+                    });
+                });
+            </script>
+    </section>
+</body>
+  
+</html>
