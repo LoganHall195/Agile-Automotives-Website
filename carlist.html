@@ -37,7 +37,7 @@
                 $(document).ready(function () {
   
                     // FETCHING DATA FROM JSON FILE
-                    $.getJSON("list.json", function (data) {
+                    $.getJSON("https://softwaree-group7-default-rtdb.firebaseio.com/Cars.json", function (data) {
                         var car = '<div id=\"carlist\" style=\"'+data.length*1000+'px; overflow: hidden;\">'; // does nothing
                         car = '<div class=\"row\"style=\"width:100%;\">';
                             // ITERATING THROUGH OBJECTS
