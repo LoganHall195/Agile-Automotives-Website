@@ -40,6 +40,7 @@ var email, password, signupEmail, signupPassword, confirmSignupEmail, confirmSig
 
 
 createacctbtn.addEventListener("click", function() {
+  alert("createacctbtn clicked") //temp pls remove
   var isVerified = true;
 
   signupEmail = signupEmailIn.value;
