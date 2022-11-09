@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Agile Automotives - Home</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- JS Session Dropdown -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById("DropDownCarType").value = JSON.parse(sessionStorage.carType);
+            document.getElementById("DropDownTag").value = JSON.parse(sessionStorage.carTag);
+            document.getElementById("DropDownPrice").value = JSON.parse(sessionStorage.carPrice);
+            document.getElementById("DropDownDate").value = JSON.parse(sessionStorage.carDate);
+        }
+        
+        function updateSearch() //onchange="updateSearch();" 
+        {
+            sessionStorage.setItem("carType", JSON.stringify(document.getElementById("DropDownCarType").value));
+            sessionStorage.setItem("carTag", JSON.stringify(document.getElementById("DropDownTag").value));
+            sessionStorage.setItem("carPrice", JSON.stringify(document.getElementById("DropDownPrice").value));
+            sessionStorage.setItem("carDate", JSON.stringify(document.getElementById("DropDownDate").value));
+        }
+        
+    </script>
+</head>
+  
+<body>
+    <section>
+    <!-- Search Start -->
+    <div class="container-fluid bg-white pt-3 px-lg-5">
+        <div class="row mx-n2">
+            <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+                <select class="custom-select px-4 mb-3" style="height: 50px;" id="DropDownCarType" onchange="updateSearch()" >
+                    <option selected>Car Type</option>
+                    <option value="1">Truck</option>
+                    <option value="2">SUV</option>
+                    <option value="3">Hatchback</option>
+                    <option value="4">Minivan</option>
+                    <option value="5">Convertible</option>
+                    <option value="6">Coupe</option>
+                    <option value="7">Sports Car</option>
+                </select>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+                <select class="custom-select px-4 mb-3" style="height: 50px;" id="DropDownTag" onchange="updateSearch()">
+                    <option selected>Tags</option>
+                    <option value="1">High Occupancy Vehicle</option>
+                    <option value="2">Low Occupancy Vehicle</option>
+                    <option value="3">Large Trunk</option>
+                    <option value="3">Luxury</option>
+                </select>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 px-2"> 
+                <select class="custom-select px-4 mb-3" style="height: 50px;" id="DropDownPrice" onchange="updateSearch()">
+                    <option selected>Price Range</option>
+                    <option value="1">&#60 $x</option>
+                    <option value="2">$x &#60 $y</option>
+                    <option value="3">$y &#60 $z</option>
+                    <option value="3">$z &#60</option>
+                </select>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+                <div class="date mb-3" id="date" data-target-input="nearest" id="DropDownDate" onchange="updateSearch()">
+                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Availablity Date"
+                        data-target="#date" data-toggle="datetimepicker" />
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+                <select class="custom-select px-4 mb-3" style="height: 50px;">
+                    <option selected>Car</option>
+                    <option value="1">Car 1</option>
+                    <option value="2">Car 1</option>
+                    <option value="3">Car 1</option>
+                </select>
+            </div>
+            <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+                <a class="btn btn-primary btn-block mb-3" style="height: 50px; line-height: 35px;" href="car.html" target="_top">Search</a>
+            </div>
+        </div>
+    </div>
+    <!-- Search End -->
+    </section>
+</body>
+</html>
