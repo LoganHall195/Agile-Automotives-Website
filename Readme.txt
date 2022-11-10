@@ -9,5 +9,5 @@ TODO:
 - add name, birthday, email, pass, confirm pass to signup
 - make the user info appear session storage
 - make booking auto populate some user info
-- add more cars
+
 - implement filters
