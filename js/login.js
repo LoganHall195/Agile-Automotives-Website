@@ -33,8 +33,6 @@ const confirmSignUpPasswordIn = document.getElementById("confirm-password-signup
 const createacctbtn = document.getElementById("create-acct-btn");
 
 
-const returnBtn = document.getElementById("return-btn");
-
 var email, password, signupEmail, signupPassword, confirmSignupEmail, confirmSignUpPassword;
 
 
@@ -105,7 +103,3 @@ signupButton.addEventListener("click", function() {
     createacct.style.display = "block";
 });
 
-returnBtn.addEventListener("click", function() {
-    main.style.display = "none";
-    createacct.style.display = "block";
-});
