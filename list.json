@@ -1,41 +1,295 @@
-    [{ 
-        "img" : "img/car-rent-1.png",
-        "manufacturer" : "AMG",
-        "model" : "GT",
-        "price" : 99,
-        "year": "2015-2022",
-        "transmission": "AUTO",
-        "mileage": "17 MPG"
-    },{ 
-        "img" : "img/car-rent-2.png",
-        "manufacturer" : "Mercedes Benz",
-        "model" : "R3",
-        "price" : 99,
-        "year": "2007-2014",
-        "transmission": "AUTO/MAN",
-        "mileage": "18 MPG"
-    },{ 
-        "img" : "img/car-rent-6.png",
-        "manufacturer" : "Audi",
-        "model" : "R8",
-        "price" : 99,
-        "year": "2007-2022",
-        "transmission": "AUTO",
-        "mileage": "16 MPG"
-    },{ 
-        "img" : "img/car-rent-4.png",
-        "manufacturer" : "Audi",
-        "model" : "Q3",
-        "price" : 99,
-        "year": "2015-2022",
-        "transmission": "AUTO/MAN",
-        "mileage": "25 MPG"
-    },{ 
-        "img" : "img/car-rent-5.png",
-        "manufacturer" : "Mercedes Benz",
-        "model" : "C-Class",
-        "price" : 99,
-        "year": "2015-2022",
-        "transmission": "AUTO/MAN",
-        "mileage": "27 MPG"
-    }]
+{"Cars":
+    [   
+         { 
+         "img" : "img/car-rent-1.png",        
+         "manufacturer" : "AMG",
+         "model" : "GT",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO",
+         "mileage": "17 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Coupe"
+ 
+     },{ 
+         "img" : "img/car-rent-2.png",
+         "manufacturer" : "Mercedes Benz",
+         "model" : "C300",
+         "price" : 99,
+         "year": "2007-2014",
+         "transmission": "AUTO/MAN",
+         "mileage": "18 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Coupe"
+     },{ 
+         "img" : "img/car-rent-6.png",
+         "manufacturer" : "Audi",
+         "model" : "R8",
+         "price" : 99,
+         "year": "2007-2022",
+         "transmission": "AUTO",
+         "mileage": "16 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Sports Car"
+     },{ 
+         "img" : "img/car-rent-4.png",
+         "manufacturer" : "Audi",
+         "model" : "Q3",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO/MAN",
+         "mileage": "25 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "SUV"
+     },{ 
+         "img" : "img/car-rent-5.png",
+         "manufacturer" : "Mercedes Benz",
+         "model" : "C-350",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO/MAN",
+         "mileage": "27 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Coupe"
+     }
+     ,{ 
+         "img" : "img/",
+         "manufacturer" : "Chevrolet",
+         "model" : "Silverado",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO/MAN",
+         "mileage": "18 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Truck"
+     },{ 
+         "img" : "img/",
+         "manufacturer" : "Chevrolet",
+         "model" : "Surburban",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO",
+         "mileage": "17 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "SUV"
+     },{ 
+         "img" : "img/",
+         "manufacturer" : "Chevrolet",
+         "model" : "Tahoe",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO",
+         "mileage": "18 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "SUV"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Chevrolet",
+         "model" : "Camaro",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO/MAN",
+         "mileage": "18 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Coupe"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Chevrolet",
+         "model" : "Corvette",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO/MAN",
+         "mileage": "18 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Sport Car"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Chevrolet",
+         "model" : "Camaro",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO/MAN",
+         "mileage": "17 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Convertible"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Toyota",
+         "model" : "Sienna",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO",
+         "mileage": "22 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Minivan"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Toyota",
+         "model" : "Prius",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO",
+         "mileage": "43 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Hatch"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Ford",
+         "model" : "Mustang",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO/MAN",
+         "mileage": "18 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Coupe"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Ford",
+         "model" : "Mustang",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO/MAN",
+         "mileage": "17 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Convertible"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Ford",
+         "model" : "F-150",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO",
+         "mileage": "17 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Truck"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Ford",
+         "model" : "Expedition",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO",
+         "mileage": "17 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "SUV"
+     },
+     { 
+         "img" : "img/",
+         "manufacturer" : "Ford",
+         "model" : "GT",
+         "price" : 99,
+         "year": "2015-2022",
+         "transmission": "AUTO",
+         "mileage": "22 MPG",
+         "quantity": "",
+         "tag": "",
+         "type": "Sport Car"
+     }
+     
+     
+     ],
+ 
+ "Carlist": 
+ [
+     {
+         "serial" : 0,
+         "color" : "Yellow",
+         "year" : "2015-2022"
+     },{
+         "serial" : 1,
+         "color" : "Red",
+         "year" : "2015-2022"
+     },{
+         "serial" : 2,
+         "color" : "Grey",
+         "year" : "2015-2022"
+     },{
+         "serial" : 3,
+         "color" : "Orange",
+         "year" : "2015-2022"
+     },{
+         "serial" : 4,
+         "color" : "Blue",
+         "year" : "2015-2022"
+     },{
+         "serial" : 5,
+         "color" : "Green",
+         "year" : "2015-2022"
+     },{
+         "serial" : 6,
+         "color" : "Black",
+         "year" : "2015-2022"
+     },{
+         "serial" : 7,
+         "color" : "White",
+         "year" : "2015-2022"
+     },{
+         "serial" : 8,
+         "color" : "Blue",
+         "year" : "2015-2022"
+     },{
+         "serial" : 9,
+         "color" : "Red",
+         "year" : "2015-2022"
+     },{
+         "serial" : 10,
+         "color" : "Black",
+         "year" : "2015-2022"
+     },{
+         "serial" : 11,
+         "color" : "White",
+         "year" : "2015-2022"
+     },{
+         "serial" : 12,
+         "color" : "Grey",
+         "year" : "2015-2022"
+     },{
+         "serial" : 13,
+         "color" : "Black",
+         "year" : "2015-2022"
+     },{
+         "serial" : 14,
+         "color" : "White",
+         "year" : "2015-2022"
+     },{
+         "serial" : 15,
+         "color" : "Blue",
+         "year" : "2015-2022"
+     },{
+         "serial" : 16,
+         "color" : "Black",
+         "year" : "2015-2022"
+     },{
+         "serial" : 17,
+         "color" : "White",
+         "year" : "2015-2022"
+     }
+ ]
+ }
+ 
