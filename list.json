@@ -1,7 +1,7 @@
 {"Cars":
     [   
          { 
-         "img" : "img/car-rent-1.png",        
+         "img" : "img/carlist/amg_gt.png",        
          "manufacturer" : "AMG",
          "model" : "GT",
          "price" : 99,
@@ -13,7 +13,7 @@
          "type": "Coupe"
  
      },{ 
-         "img" : "img/car-rent-2.png",
+         "img" : "img/carlist/mercedes_benz_c300.png",
          "manufacturer" : "Mercedes Benz",
          "model" : "C300",
          "price" : 99,
@@ -24,7 +24,7 @@
          "tag": "",
          "type": "Coupe"
      },{ 
-         "img" : "img/car-rent-6.png",
+         "img" : "img/carlist/audi_r8.png",
          "manufacturer" : "Audi",
          "model" : "R8",
          "price" : 99,
@@ -35,7 +35,7 @@
          "tag": "",
          "type": "Sports Car"
      },{ 
-         "img" : "img/car-rent-4.png",
+         "img" : "img/carlist/audi_q3.png",
          "manufacturer" : "Audi",
          "model" : "Q3",
          "price" : 99,
@@ -46,7 +46,7 @@
          "tag": "",
          "type": "SUV"
      },{ 
-         "img" : "img/car-rent-5.png",
+         "img" : "img/carlist/mercedes_benz_c350.png",
          "manufacturer" : "Mercedes Benz",
          "model" : "C-350",
          "price" : 99,
