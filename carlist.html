@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Car Lists</title>
-  
+    
     <!-- INCLUDING JQUERY-->
-      <script src="https://code.jquery.com/jquery-3.5.1.js">
-      </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://www.w3schools.com/lib/w3.js"></script>
       <!-- Favicon -->
       <link href="img/favicon.ico" rel="icon">
 
@@ -45,15 +45,34 @@
                             // CONSTRUCTION OF ROWS HAVING
                             // DATA FROM JSON OBJECT
 
-                            car+= '<div class=\"col-lg-4 col-md-6 mb-2\"><div class=\"rent-item mb-4\" style=\"width:100%;\">'
-                            car+= '<div '
-                            if(value.type=='truck'){
-                                car+='class=\"type_truck\"><tr>'
-                            }else{
-                                car+= '><tr>'
+                            car+= '<div class=\"col-lg-4 col-md-6 mb-2 '
+                            
+                            if(value.type=='Truck'){
+                                car+='type_truck'
+                            }else if(value.type=='SUV'){
+                                car+= 'type_suv'
+                            }else if(value.type=='Hatchback'){
+                                car+= 'type_hatchback'
+                            }else if(value.type=='Minivan'){
+                                car+= 'type_minivan'
+                            }else if(value.type=='Convertible'){
+                                car+= 'type_convertible'
+                            }else if(value.type=='Coupe'){
+                                car+= 'type_coupe'
+                            }else if(value.type=='Sports Car'){
+                                car+= 'type_sport'
                             };
                             
-                            car+="<img class=\"img-fluid mb-4\" src=\""+value.img+"\" alt=\"\">";
+                            car+= '\"><div class=\"rent-item mb-4\" style=\"width:100%;\"><div><tr>'
+                            
+                            car+="<img class=\"img-fluid mb-4 ";
+                            if(value.type=='Truck'){
+                                car+='type_truck'
+                            }else{
+                                car+= ''
+                            };
+                            car+="\" src=\""+value.img+"\" alt=\"\">"
+
                             car+="<h4 class=\"text-uppercase mb-4\">" + value.manufacturer + " " + value.model + "</h4><br>";
                             
                             car+="<li>"+ value.year +"</li>";
@@ -67,9 +86,95 @@
                           
                         //INSERTING ROWS INTO TABLE 
                         $('#table').append(car);
+
+                        
+                        //w3.hide('.type_truck')
+                        var choosen_class;
+                        if (JSON.parse(sessionStorage.carType)=="Truck"){
+                            w3.hide('.type_suv')
+                            w3.hide('.type_hatchback')
+                            w3.hide('.type_minivan')
+                            w3.hide('.type_convertible')
+                            w3.hide('.type_coupe')
+                            w3.hide('.type_sport')
+                        } else if (JSON.parse(sessionStorage.carType)=="SUV"){
+                            w3.hide('.type_truck')
+                            w3.hide('.type_hatchback')
+                            w3.hide('.type_minivan')
+                            w3.hide('.type_convertible')
+                            w3.hide('.type_coupe')
+                            w3.hide('.type_sport')
+                        } else if (JSON.parse(sessionStorage.carType)=="Hatchback"){
+                            w3.hide('.type_truck')
+                            w3.hide('.type_suv')
+                            w3.hide('.type_minivan')
+                            w3.hide('.type_convertible')
+                            w3.hide('.type_coupe')
+                            w3.hide('.type_sport')
+                        } else if (JSON.parse(sessionStorage.carType)=="Minivan"){
+                            w3.hide('.type_truck')
+                            w3.hide('.type_suv')
+                            w3.hide('.type_hatchback')
+                            w3.hide('.type_convertible')
+                            w3.hide('.type_coupe')
+                            w3.hide('.type_sport')
+                        } else if (JSON.parse(sessionStorage.carType)=="Convertible"){
+                            w3.hide('.type_truck')
+                            w3.hide('.type_suv')
+                            w3.hide('.type_hatchback')
+                            w3.hide('.type_minivan')
+                            w3.hide('.type_coupe')
+                            w3.hide('.type_sport')
+                        } else if (JSON.parse(sessionStorage.carType)=="Coupe"){
+                            w3.hide('.type_truck')
+                            w3.hide('.type_suv')
+                            w3.hide('.type_hatchback')
+                            w3.hide('.type_minivan')
+                            w3.hide('.type_convertible')
+                            w3.hide('.type_sport')
+                        } else if (JSON.parse(sessionStorage.carType)=="Sports Car"){
+                            w3.hide('.type_truck')
+                            w3.hide('.type_suv')
+                            w3.hide('.type_hatchback')
+                            w3.hide('.type_minivan')
+                            w3.hide('.type_convertible')
+                            w3.hide('.type_coupe')
+                        }
                     });
                 });
             </script>
+            
+            <!---script>
+                window.onload = function() {
+                    if (JSON.parse(sessionStorage.carType)=="Truck"){
+                        w3.hide('.type_truck')
+                        w3.hide('.type_suv')
+                        w3.hide('.type_hatchback')
+                        w3.hide('.type_minivan')
+                        w3.hide('.type_convertible')
+                        w3.hide('.type_coupe')
+                        w3.hide('.type_sport')
+                    } else if (JSON.parse(sessionStorage.carType)=="SUV"){
+
+                    } else if (JSON.parse(sessionStorage.carType)=="Hatchback"){
+                        
+                    } else if (JSON.parse(sessionStorage.carType)=="Minivan"){
+                        
+                    } else if (JSON.parse(sessionStorage.carType)=="Convertible"){
+                        
+                    } else if (JSON.parse(sessionStorage.carType)=="Coupe"){
+                        
+                    } else if (JSON.parse(sessionStorage.carType)=="Sports Car"){
+                        
+                    }
+
+                    /*
+                    document.getElementById("DropDownTag").value = JSON.parse(sessionStorage.carTag);
+                    document.getElementById("DropDownPrice").value = JSON.parse(sessionStorage.carPrice);
+                    document.getElementById("DropDownDate").value = JSON.parse(sessionStorage.carDate);
+                    */
+                }
+            </script--->
     </section>
 </body>
   
