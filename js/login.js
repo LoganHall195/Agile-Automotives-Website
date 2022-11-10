@@ -106,6 +106,6 @@ signupButton.addEventListener("click", function() {
 });
 
 returnBtn.addEventListener("click", function() {
-    main.style.display = "block";
-    createacct.style.display = "none";
+    main.style.display = "none";
+    createacct.style.display = "block";
 });
