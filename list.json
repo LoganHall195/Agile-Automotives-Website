@@ -58,7 +58,7 @@
          "type": "Coupe"
      }
      ,{ 
-         "img" : "img/",
+         "img" : "img/carlist/chevrolet_silverado.png",
          "manufacturer" : "Chevrolet",
          "model" : "Silverado",
          "price" : 99,
@@ -69,7 +69,7 @@
          "tag": "",
          "type": "Truck"
      },{ 
-         "img" : "img/",
+         "img" : "img/carlist/chevrolet_suburban.png",
          "manufacturer" : "Chevrolet",
          "model" : "Surburban",
          "price" : 99,
@@ -80,7 +80,7 @@
          "tag": "",
          "type": "SUV"
      },{ 
-         "img" : "img/",
+         "img" : "img/carlist/chevrolet_tahoe.png",
          "manufacturer" : "Chevrolet",
          "model" : "Tahoe",
          "price" : 99,
@@ -92,7 +92,7 @@
          "type": "SUV"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/chevrolet_camaro.png",
          "manufacturer" : "Chevrolet",
          "model" : "Camaro",
          "price" : 99,
@@ -104,7 +104,7 @@
          "type": "Coupe"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/chevrolet_corvette.png",
          "manufacturer" : "Chevrolet",
          "model" : "Corvette",
          "price" : 99,
@@ -116,7 +116,7 @@
          "type": "Sport Car"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/chevrolet_camaro_convertible.png",
          "manufacturer" : "Chevrolet",
          "model" : "Camaro",
          "price" : 99,
@@ -128,7 +128,7 @@
          "type": "Convertible"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/toyota_sienna.png",
          "manufacturer" : "Toyota",
          "model" : "Sienna",
          "price" : 99,
@@ -140,7 +140,7 @@
          "type": "Minivan"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/toyota_prius.png",
          "manufacturer" : "Toyota",
          "model" : "Prius",
          "price" : 99,
@@ -152,7 +152,7 @@
          "type": "Hatch"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/ford_mustang.png",
          "manufacturer" : "Ford",
          "model" : "Mustang",
          "price" : 99,
@@ -164,7 +164,7 @@
          "type": "Coupe"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/ford_mustang_convertible.png",
          "manufacturer" : "Ford",
          "model" : "Mustang",
          "price" : 99,
@@ -176,7 +176,7 @@
          "type": "Convertible"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/ford_f150.png",
          "manufacturer" : "Ford",
          "model" : "F-150",
          "price" : 99,
@@ -188,7 +188,7 @@
          "type": "Truck"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/ford_expedition.png",
          "manufacturer" : "Ford",
          "model" : "Expedition",
          "price" : 99,
@@ -200,7 +200,7 @@
          "type": "SUV"
      },
      { 
-         "img" : "img/",
+         "img" : "img/carlist/ford_gt.png",
          "manufacturer" : "Ford",
          "model" : "GT",
          "price" : 99,
