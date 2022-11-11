@@ -5,9 +5,13 @@ Special thanks to Gabby Skelton for the static signup inspiration, you can see m
 
 
 TODO:
-- FIX -> authenticate login/signup via firebase and report using alerts
-- add name, birthday, email, pass, confirm pass to signup
+o user info
+- add name & birthday to signup
 - make the user info appear session storage
+o booking
 - make booking auto populate some user info
-- add more cars
+- color shift when selecting vehicle option
+o car list
 - implement filters
+- prices
+- finish search bar
