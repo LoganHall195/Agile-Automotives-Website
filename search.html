@@ -33,15 +33,28 @@
             document.getElementById("DropDownCarType").value = JSON.parse(sessionStorage.carType);
             document.getElementById("DropDownTag").value = JSON.parse(sessionStorage.carTag);
             document.getElementById("DropDownPrice").value = JSON.parse(sessionStorage.carPrice);
-            document.getElementById("DropDownDate").value = JSON.parse(sessionStorage.carDate);
+            document.querySelector('input[type="date"]').value = JSON.parse(sessionStorage.carDate);
         }
         
-        function updateSearch() //onchange="updateSearch();" 
+        function updateSearch()
         {
             sessionStorage.setItem("carType", JSON.stringify(document.getElementById("DropDownCarType").value));
             sessionStorage.setItem("carTag", JSON.stringify(document.getElementById("DropDownTag").value));
             sessionStorage.setItem("carPrice", JSON.stringify(document.getElementById("DropDownPrice").value));
-            sessionStorage.setItem("carDate", JSON.stringify(document.getElementById("DropDownDate").value));
+            sessionStorage.setItem("carDate", JSON.stringify(document.querySelector('input[type="date"]').value));
+        }
+
+        function clearSearch()
+        {
+            sessionStorage.removeItem("carType");
+            sessionStorage.removeItem("carTag");
+            sessionStorage.removeItem("carPrice");
+            sessionStorage.removeItem("carDate");
+            
+            document.getElementById("DropDownCarType").value = "Car Type";
+            document.getElementById("DropDownTag").value = "Tags";
+            document.getElementById("DropDownPrice").value = "Price Range";
+            document.querySelector('input[type="date"]').value = "";
         }
         
     </script>
@@ -50,9 +63,9 @@
 <body>
     <section>
     <!-- Search Start -->
-    <div class="container-fluid bg-white pt-3 px-lg-5">
-        <div class="row mx-n2">
-            <div class="col-xl-2 col-lg-4 col-md-6 px-2">
+    <div class="cbg-white pt-1 px-lg-5" style="align-content: center;">
+        <div class="row mx-n2" style="align-content: center;">
+            <div class="col-xl-2 col-lg-4 col-md-5 px-2">
                 <select class="custom-select px-4 mb-3" style="height: 50px;" id="DropDownCarType" onchange="updateSearch()" >
                     <option selected>Car Type</option>
                     <option value="Truck">Truck</option>
@@ -84,17 +97,12 @@
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 <div class="date mb-3" id="date" data-target-input="nearest" id="DropDownDate" onchange="updateSearch()">
-                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Availablity Date"
-                        data-target="#date" data-toggle="datetimepicker" />
+                    <input type="date" class="form-control p-4 datetimepicker-input" placeholder="Availablity Date"
+                    min="2022-01-01" max="2023-12-31"/>
                 </div>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
-                <select class="custom-select px-4 mb-3" style="height: 50px;">
-                    <option selected>Car</option>
-                    <option value="1">Car 1</option>
-                    <option value="2">Car 1</option>
-                    <option value="3">Car 1</option>
-                </select>
+                <button class="btn btn-primary btn-block mb-3" style="height: 50px; line-height: 35px; filter: grayscale(1);" onclick="clearSearch()" target="_top">Clear Search</button>
             </div>
             <div class="col-xl-2 col-lg-4 col-md-6 px-2">
                 <a class="btn btn-primary btn-block mb-3" style="height: 50px; line-height: 35px;" href="car.html" target="_top">Search</a>
@@ -102,6 +110,7 @@
         </div>
     </div>
     <!-- Search End -->
+
     </section>
 </body>
 </html>

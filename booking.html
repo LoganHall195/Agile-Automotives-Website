@@ -184,17 +184,6 @@
                 </div>
                 <div class="col-lg-6 mb-4">
                     <h4 class="mb-2">$99.00/Day</h4>
-                    <div class="d-flex mb-3">
-                        <h6 class="mr-2">Rating:</h6>
-                        <div class="d-flex align-items-center justify-content-center mb-1">
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star text-primary mr-1"></small>
-                            <small class="fa fa-star-half-alt text-primary mr-1"></small>
-                            <small>(250)</small>
-                        </div>
-                    </div>
                     <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt</p>
                     <div class="d-flex pt-1">
                         <h6>Share on:</h6>
@@ -215,17 +204,17 @@
                     &emsp;
                     <span>
                         <i class="fa fa-car text-primary mr-2"></i>
-                        <span>Model: 2015</span>
+                        <span>Year: 2015</span>
                     </span>
                     &emsp;
                     <span>
                         <i class="fa fa-road text-primary mr-2"></i>
-                        <span>20km/liter</span>
+                        <span>Available: Now</span>
                     </span>
                     &emsp;
                     <span>
                         <i class="fa fa-eye text-primary mr-2"></i>
-                        <span>Blue</span>
+                        <span>Color: Blue</span>
                     </span>
                     &emsp;
                     <span>
@@ -240,17 +229,17 @@
                     &emsp;
                     <span>
                         <i class="fa fa-car text-primary mr-2"></i>
-                        <span>Model: 2015</span>
+                        <span>Year: 2015</span>
                     </span>
                     &emsp;
                     <span>
                         <i class="fa fa-road text-primary mr-2"></i>
-                        <span>20km/liter</span>
+                        <span>Available: Now</span>
                     </span>
                     &emsp;
                     <span>
                         <i class="fa fa-eye text-primary mr-2"></i>
-                        <span>Red</span>
+                        <span>Color: Red</span>
                     </span>
                     &emsp;
                     <span>
@@ -265,17 +254,17 @@
                     &emsp;
                     <span>
                         <i class="fa fa-car text-primary mr-2"></i>
-                        <span>Model: 2015</span>
+                        <span>Year: 2015</span>
                     </span>
                     &emsp;
                     <span>
                         <i class="fa fa-road text-primary mr-2"></i>
-                        <span>20km/liter</span>
+                        <span>Available: Now</span>
                     </span>
                     &emsp;
                     <span>
                         <i class="fa fa-eye text-primary mr-2"></i>
-                        <span>Black</span>
+                        <span>Color: Black</span>
                     </span>
                     &emsp;
                     <span>
@@ -294,7 +283,7 @@
     <div class="container-fluid pb-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8" id="booking_info" style="opacity: 65%; pointer-events:none;">
                     <h2 class="mb-4">Personal Detail</h2>
                     <div class="mb-5">
                         <div class="row">
@@ -324,23 +313,13 @@
                                 </div>
                             </div>
                             <div class="col-6 form-group">
-                                <div class="time" id="time2" data-target-input="nearest">
-                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Time"
-                                        data-target="#time2" data-toggle="datetimepicker" />
+                                <div class="date" id="date1" data-target-input="nearest">
+                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Dropoff Date"
+                                        data-target="#date1" data-toggle="datetimepicker" />
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6 form-group">
-                                <textarea class="form-control p-4" style="resize: none; height: 50px; overflow-y: hidden; overflow-x: hidden; line-height: 1px" rows="0" placeholder="Vehicle Serial No." required="required" ></textarea>
-                            </div>
-                            <div class="col-6 form-group">
-                                <div class="time" id="time2" data-target-input="nearest">
-                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="DropOff Time"
-                                        data-target="#time2" data-toggle="datetimepicker" />
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <textarea class="form-control py-3 px-4" rows="3" placeholder="Special Request" required="required"></textarea>
                         </div>
@@ -349,25 +328,28 @@
                 <div class="col-lg-4">
                     <div class="bg-secondary p-5 mb-5">
                         <h2 class="text-primary mb-4">Payment</h2>
-                        <span>$107.16[Estimated Total] = $99[Serial No.] * 8.25%[Tax]</span>
-                        <input id="discountbox" type="text" class="custom-control-label" placeholder="Discount Code" onfocusout="checkdiscount()">
+                        <span id="payment_calc">
+                            
+                            $<p id="payment_rent" style="display: inline;">99</p> [Selected Vehicle]<br>
+                            <input id="payment_discount" type="text" class="custom-control-label" placeholder="Discount Code" onfocusout="checkdiscount()" style="display: inline;">
+                            <br>
+                            <p style="display: inline;">$99</p> [Sub Total]<br>
+                            <p id="payment_tax" style="display: inline;">8.25</p>% [Tax]<br>
+                            $<p id="payment_total" style="display: inline;">107.16</p> [Estimated Total]
+
+
+                        </span>
                         <br><br>
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
+                                <input type="radio" class="custom-control-input" name="payment" id="pay_paypal">
                                 <label class="custom-control-label" for="paypal">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
+                                <input type="radio" class="custom-control-input" name="payment" id="pay_card">
+                                <label class="custom-control-label" for="banktransfer">Debit/Credit Card</label>
                             </div>
                         </div>
                         <button class="btn btn-block btn-primary py-3">Reserve Now</button>
