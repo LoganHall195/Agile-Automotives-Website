@@ -10,19 +10,21 @@
          "mileage": "17 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Coupe"
+         "type": "Coupe",
+         "serial" : 0
  
      },{ 
          "img" : "img/carlist/mercedes_benz_c300.png",
          "manufacturer" : "Mercedes Benz",
-         "model" : "C300",
+         "model" : "C-300",
          "price" : 99,
          "year": "2007-2014",
          "transmission": "AUTO/MAN",
          "mileage": "18 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Coupe"
+         "type": "Coupe",
+         "serial" : 1
      },{ 
          "img" : "img/carlist/audi_r8.png",
          "manufacturer" : "Audi",
@@ -33,7 +35,8 @@
          "mileage": "16 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Sports Car"
+         "type": "Sports Car",
+         "serial" : 2
      },{ 
          "img" : "img/carlist/audi_q3.png",
          "manufacturer" : "Audi",
@@ -44,7 +47,8 @@
          "mileage": "25 MPG",
          "quantity": "",
          "tag": "",
-         "type": "SUV"
+         "type": "SUV",
+         "serial" : 3
      },{ 
          "img" : "img/carlist/mercedes_benz_c350.png",
          "manufacturer" : "Mercedes Benz",
@@ -55,7 +59,8 @@
          "mileage": "27 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Coupe"
+         "type": "Coupe",
+         "serial" : 4
      }
      ,{ 
          "img" : "img/carlist/chevrolet_silverado.png",
@@ -113,7 +118,7 @@
          "mileage": "18 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Sport Car"
+         "type": "Sports Car"
      },
      { 
          "img" : "img/carlist/chevrolet_camaro_convertible.png",
@@ -149,7 +154,7 @@
          "mileage": "43 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Hatch"
+         "type": "Hatchback"
      },
      { 
          "img" : "img/carlist/ford_mustang.png",
@@ -209,7 +214,7 @@
          "mileage": "22 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Sport Car"
+         "type": "Sports Car"
      }
      
      
@@ -290,6 +295,174 @@
          "color" : "White",
          "year" : "2015-2022"
      }
- ]
+ ],
+ "Inventory":
+    {"amgGt":
+        [{
+        "year": 2010,
+        "color": "red"
+        },
+        {
+        "year": 2011,
+        "color": "blue"
+        }],
+
+    "mercedesBenzC300":
+      [{
+        "year": 2010,
+        "color": "red"
+        },
+        {
+        "year": 2011,
+        "color": "blue"
+        }],
+    "audiR8":
+      [{
+        "year": 2010,
+        "color": "red"
+        },
+        {
+        "year": 2011,
+        "color": "blue"
+        }],
+        "audiQ3":
+        [{
+          "year": 2010,
+          "color": "red"
+          },
+          {
+          "year": 2011,
+          "color": "blue"
+          }],
+          "mercedesBenz350":
+        [{
+            "year": 2010,
+            "color": "red"
+            },
+            {
+            "year": 2011,
+            "color": "blue"
+            }],
+            "chevySilverado":
+        [{
+            "year": 2010,
+            "color": "red"
+            },
+            {
+            "year": 2011,
+            "color": "blue"
+            }],
+            "chevySuburban":
+        [{
+            "year": 2010,
+            "color": "red"
+            },
+            {
+            "year": 2011,
+            "color": "blue"
+            }],
+            "chevyTahoe":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+                }],
+            "chevyCamaroCoupe":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+                }],
+            "chevyCorvette":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+                }],
+            "chevyCamaroConvertible":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+            }],
+            "toyotaSienna":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+            }],
+            "toyotaPrius":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+            }],
+            "fordMustang":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+            }],
+            "fordMustangConvertible":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+            }],
+            "fordF150":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+            }],
+            "fordExpedition":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+            }],
+            "fordGT":
+            [{
+                "year": 2010,
+                "color": "red"
+                },
+                {
+                "year": 2011,
+                "color": "blue"
+            }]
+
+    }
+    
+    
  }
  
