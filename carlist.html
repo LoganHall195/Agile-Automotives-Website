@@ -29,8 +29,10 @@
       
     
     <script>
-        function bookThis(value) {
-            sessionStorage.setItem("bookThis", value);
+        function bookThis(key) {
+            $.getJSON("https://softwaree-group7-default-rtdb.firebaseio.com/Cars.json", function(data) {
+                sessionStorage.setItem("bookThis", JSON.stringify(data[key]));
+            });
         }
     </script>
 </head>
@@ -93,7 +95,7 @@
                             car+="<li>"+ value.mileage +"</li><br>";
                             
                             car+="<a class=\"btn btn-primary px-3\" onmouseover=\"bookThis(";
-                            car+=key
+                            car+= key;
                             car+=")\" href=\"booking.html\" target=\"_top\"> $"+ value.price +"/day</a>";
   
                             car += '</tr></div></div></div>';
@@ -161,7 +163,7 @@
                         } 
 
                         // Tag Filter
-                        
+
 
                         // Price Filter
                         if (JSON.parse(sessionStorage.carPrice)==0){

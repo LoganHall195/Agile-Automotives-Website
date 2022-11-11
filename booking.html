@@ -25,6 +25,16 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function() {
+            var bookThis = JSON.parse(sessionStorage.bookThis);
+            document.getElementById("bookThisCar").textContent = bookThis.manufacturer + ' ' + bookThis.model;
+            document.getElementById("bookThisPrice").textContent = bookThis.price;
+            
+        }
+    </script>
 </head>
 
 <body>
@@ -177,13 +187,13 @@
     <!-- Detail Start -->
     <div class="container-fluid pt-5">
         <div class="container pt-5 pb-3">
-            <h1 class="display-4 text-uppercase mb-5">Mercedes Benz R3</h1>
+            <h1 id="bookThisCar" class="display-4 text-uppercase mb-5">Mercedes Benz R3</h1>
             <div class="row align-items-center pb-2">
                 <div class="col-lg-6 mb-4">
                     <img class="img-fluid" src="img/bg-banner.jpg" alt="">
                 </div>
                 <div class="col-lg-6 mb-4">
-                    <h4 class="mb-2">$99.00/Day</h4>
+                    <h4 class="mb-2" style="display: inline;">$</h4><h4 id="bookThisPrice" class="mb-2" style="display: inline;"></h4><h4 class="mb-2" style="display: inline;">/Day</h4>
                     <p>Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt</p>
                     <div class="d-flex pt-1">
                         <h6>Share on:</h6>
