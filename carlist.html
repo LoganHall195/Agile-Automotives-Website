@@ -26,13 +26,19 @@
   
       <!-- Template Stylesheet -->
       <link href="css/style.css" rel="stylesheet">
+      
+    
+    <script>
+        function bookThis(value) {
+            sessionStorage.setItem("bookThis", value);
+        }
+    </script>
 </head>
   
 <body>
     <section>
         <!-- TABLE CONSTRUCTION-->
         <table id='table'>
-  
             <script>
                 $(document).ready(function () {
   
@@ -45,32 +51,39 @@
                             // CONSTRUCTION OF ROWS HAVING
                             // DATA FROM JSON OBJECT
 
-                            car+= '<div class=\"col-lg-4 col-md-6 mb-2 '
+                            car+= '<div id=\"car_'+key+'\" ';
+                            car+= 'class=\"col-lg-4 col-md-6 mb-2 ';
                             
                             if(value.type=='Truck'){
-                                car+='type_truck'
+                                car+='type_truck';
                             }else if(value.type=='SUV'){
-                                car+= 'type_suv'
+                                car+= 'type_suv';
                             }else if(value.type=='Hatchback'){
-                                car+= 'type_hatchback'
+                                car+= 'type_hatchback';
                             }else if(value.type=='Minivan'){
-                                car+= 'type_minivan'
+                                car+= 'type_minivan';
                             }else if(value.type=='Convertible'){
-                                car+= 'type_convertible'
+                                car+= 'type_convertible';
                             }else if(value.type=='Coupe'){
-                                car+= 'type_coupe'
+                                car+= 'type_coupe';
                             }else if(value.type=='Sports Car'){
-                                car+= 'type_sport'
+                                car+= 'type_sport';
                             };
+                            car+=' ';
                             
+                            if(value.price>=500){
+                                car+= 'price_over500';
+                            }else if(value.price>=200){
+                                car+= 'price_over200';
+                            }else if(value.price>=100){
+                                car+= 'price_over100';
+                            }else if(value.price>=0){
+                                car+='price_over0';
+                            };
+
                             car+= '\"><div class=\"rent-item mb-4\" style=\"width:100%;\"><div><tr>'
                             
                             car+="<img class=\"img-fluid mb-4 ";
-                            if(value.type=='Truck'){
-                                car+='type_truck'
-                            }else{
-                                car+= ''
-                            };
                             car+="\" src=\""+value.img+"\" alt=\"\">"
 
                             car+="<h4 class=\"text-uppercase mb-4\">" + value.manufacturer + " " + value.model + "</h4><br>";
@@ -79,7 +92,9 @@
                             car+="<li>"+ value.transmission +"</li>";
                             car+="<li>"+ value.mileage +"</li><br>";
                             
-                            car+="<a class=\"btn btn-primary px-3\" href=\"\"> $"+ value.price +"/day</a>";
+                            car+="<a class=\"btn btn-primary px-3\" onmouseover=\"bookThis(";
+                            car+=key
+                            car+=")\" href=\"booking.html\" target=\"_top\"> $"+ value.price +"/day</a>";
   
                             car += '</tr></div></div></div>';
                         });
@@ -87,9 +102,13 @@
                         //INSERTING ROWS INTO TABLE 
                         $('#table').append(car);
 
-                        
-                        //w3.hide('.type_truck')
-                        var choosen_class;
+
+
+
+
+                        /* Car Search Filter */
+
+                        //Car Type Filter
                         if (JSON.parse(sessionStorage.carType)=="Truck"){
                             w3.hide('.type_suv')
                             w3.hide('.type_hatchback')
@@ -139,42 +158,35 @@
                             w3.hide('.type_minivan')
                             w3.hide('.type_convertible')
                             w3.hide('.type_coupe')
-                        }
+                        } 
+
+                        // Tag Filter
+                        
+
+                        // Price Filter
+                        if (JSON.parse(sessionStorage.carPrice)==0){
+                            w3.hide('.price_over100')
+                            w3.hide('.price_over200')
+                            w3.hide('.price_over500')
+                        } else if (JSON.parse(sessionStorage.carPrice)==100){
+                            w3.hide('.price_over0')
+                            w3.hide('.price_over200')
+                            w3.hide('.price_over500')
+                        } else if (JSON.parse(sessionStorage.carPrice)==200){
+                            w3.hide('.price_over0')
+                            w3.hide('.price_over100')
+                            w3.hide('.price_over500')
+                        } else if (JSON.parse(sessionStorage.carPrice)==500){
+                            w3.hide('.price_over0')
+                            w3.hide('.price_over100')
+                            w3.hide('.price_over200')
+                        };
+                        
+
+                        
                     });
                 });
             </script>
-            
-            <!---script>
-                window.onload = function() {
-                    if (JSON.parse(sessionStorage.carType)=="Truck"){
-                        w3.hide('.type_truck')
-                        w3.hide('.type_suv')
-                        w3.hide('.type_hatchback')
-                        w3.hide('.type_minivan')
-                        w3.hide('.type_convertible')
-                        w3.hide('.type_coupe')
-                        w3.hide('.type_sport')
-                    } else if (JSON.parse(sessionStorage.carType)=="SUV"){
-
-                    } else if (JSON.parse(sessionStorage.carType)=="Hatchback"){
-                        
-                    } else if (JSON.parse(sessionStorage.carType)=="Minivan"){
-                        
-                    } else if (JSON.parse(sessionStorage.carType)=="Convertible"){
-                        
-                    } else if (JSON.parse(sessionStorage.carType)=="Coupe"){
-                        
-                    } else if (JSON.parse(sessionStorage.carType)=="Sports Car"){
-                        
-                    }
-
-                    /*
-                    document.getElementById("DropDownTag").value = JSON.parse(sessionStorage.carTag);
-                    document.getElementById("DropDownPrice").value = JSON.parse(sessionStorage.carPrice);
-                    document.getElementById("DropDownDate").value = JSON.parse(sessionStorage.carDate);
-                    */
-                }
-            </script--->
     </section>
 </body>
   
