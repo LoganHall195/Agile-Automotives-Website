@@ -18,16 +18,15 @@ var firebaseConfig = {
 //const app = initializeApp(firebaseConfig);
 
 function writeDB(){
-    var order = admin.database().ref('/Orders/order1/0')
+    var order = admin.database().ref('"https://softwaree-group7-default-rtdb.firebaseio.com/Orders/order1/0');
     var up = {};
-    up = {
-        carSerial: "0",
-        discount: "CMAS30",
-        email: "test@email.com",
-        name: "Test",
-        phone: "1800agileauto",
-        totalPrice: "108.23"
-    };
+    up[carSerial] = "0";
+    up[discount] = "CMAS30";
+    up[email] = "test@email.com";
+    up[name] = "Test";
+    up[phone] = "1800agileauto";
+    up[totalPrice] =  "108.23";
+    
  //   const db = getDatabase(app);
   //  set(ref(db, "Orders/order1/0"),
   //  {
@@ -38,5 +37,5 @@ function writeDB(){
     //    discount: "CMAS30",
    //     totalPrice: "108.23"
    // }); 
-       return order.update(up);
+  return order.update(up);
 }
