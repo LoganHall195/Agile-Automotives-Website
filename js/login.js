@@ -82,19 +82,24 @@ submitButton.addEventListener("click", function() {
   password = passwordInput.value;
   console.log(password);
 
-  signInWithEmailAndPassword(auth, email, password)
+  signInWithEmailAndPassword(auth, email, password) //only accept creds on successful login
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       console.log("Success! Welcome back!");
       window.alert("Success! Welcome back!");
-      // ...
+      //sessionStorage.setItem("loginEmail", email); //add this back
+      //sessionStorage.setItem("loginPassword", password); //add this back
+      //sessionStorage.setItem("loggedin", "true"); //add this back
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log("Error occurred. Try again.");
       window.alert("Error occurred. Try again.");
+      sessionStorage.setItem("loginEmail", email); //delete this
+      sessionStorage.setItem("loginPassword", password); //delete this
+      sessionStorage.setItem("loggedin", "true"); //delete this
     });
 });
 

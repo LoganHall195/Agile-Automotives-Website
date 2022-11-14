@@ -30,22 +30,64 @@
     <script type="text/javascript">
         window.onload = function() {
             var bookThis = JSON.parse(sessionStorage.bookThis);
+            sessionStorage.setItem("discountName","none");
+            sessionStorage.setItem("discountAmount",0);
+            sessionStorage.setItem("rentalDays",1);
             document.getElementById("bookThisCar").textContent = bookThis.manufacturer + ' ' + bookThis.model;
             document.getElementById("bookThisPrice").textContent = bookThis.price;
             document.getElementById("bookThisImg").src = bookThis.img;
             document.getElementById("payment_rent").textContent = bookThis.price;
-            document.getElementById("payment_subtotal").textContent = bookThis.price; // Wipe & ignore discount code
+            document.getElementById("payment_subtotal").textContent = ((bookThis.price*sessionStorage.rentalDays)-(sessionStorage.discountAmount*sessionStorage.rentalDays)); // Wipe & ignore discount code
             document.getElementById("payment_total").textContent = (document.getElementById("payment_subtotal").textContent*1.0825).toFixed(2); //Apply Tax
             document.getElementById("vehicle_selected").textContent = sessionStorage.choosenSerial;
+            
+
+            
+            document.getElementById("rental_days").textContent = sessionStorage.rentalDays;
+            if(sessionStorage.loggedin=="true"){
+                document.getElementById("booking_info").style.opacity="100%";
+                document.getElementById("booking_info").style.pointerEvents="auto";
+                document.getElementById("emailForm").value = sessionStorage.loginEmail;
+                document.getElementById("passwordForm").value = sessionStorage.loginPassword;
+
+            }else{
+                window.alert("User must be logged in to book vehicles! REMEMBER TO FIX THIS FEATURE LATER");
+            }
         }
     </script>
     <script>
         $(window).on('storage',function(e){ //Do this every time session storage is updated
             if(e.originalEvent.storageArea===sessionStorage){
                 document.getElementById("vehicle_selected").textContent = sessionStorage.choosenSerial;
+                document.getElementById("payment_subtotal").text.content = (document.getElementById("payment_rent").textContent*sessionStorage.rentalDays)-(sessionStorage.discountAmount*sessionStorage.rentalDays);
+                document.getElementById("payment_total").textContent = (document.getElementById("payment_subtotal").textContent*1.0825).toFixed(2); //Apply Tax
             } 
             // else, event is caused by an update to localStorage, ignore it
         });
+    </script>
+    <script type="text/javascript">
+        function calculateDates(){
+            var bookThis = JSON.parse(sessionStorage.bookThis);
+            // JavaScript program to illustrate 
+            // calculation of no. of days between two date 
+            
+            // To set two dates to two variables
+            var date1 = new Date(sessionStorage.bookStartDate);
+            var date2 = new Date(sessionStorage.bookEndDate);
+
+            
+            // To calculate the time difference of two dates
+            var Difference_In_Time = date2.getTime() - date1.getTime();
+            
+            // To calculate the no. of days between two dates
+            var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+            
+            //To display the final no. of days (result)
+            sessionStorage.setItem("rentalDays",Difference_In_Days);
+            document.getElementById("rental_days").textContent = sessionStorage.rentalDays;
+            document.getElementById("payment_subtotal").textContent = (document.getElementById("payment_rent").textContent*sessionStorage.rentalDays)-(sessionStorage.discountAmount*sessionStorage.rentalDays);
+            document.getElementById("payment_total").textContent = (document.getElementById("payment_subtotal").textContent*1.0825).toFixed(2); //Apply Tax
+        }
     </script>
 </head>
 
@@ -241,12 +283,12 @@
                                 <input type="text" class="form-control p-4" placeholder="Mobile Number" required="required">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="pointer-events:none">
                             <div class="col-6 form-group">
-                                <input type="email" class="form-control p-4" placeholder="Your Email" required="required">
+                                <input type="email" class="form-control p-4" placeholder="Your Email" required="required" id="emailForm">
                             </div>
                             <div class="col-6 form-group">
-                                <input type="password" class="form-control p-4" placeholder="Password" required="required">
+                                <input type="password" class="form-control p-4" placeholder="Password" required="required" id="passwordForm">
                             </div>
                         </div>
                     </div>
@@ -255,15 +297,27 @@
                         <div class="row">
                             <div class="col-6 form-group">
                                 <div class="date" id="date2" data-target-input="nearest">
-                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Pickup Date"
-                                        data-target="#date2" data-toggle="datetimepicker" />
+                                    <input type="date" class="form-control p-4" placeholder="Pickup Date" id="bookStartDate" oninput="updateStartDate(event)"/>
+                                    Pickup Date
                                 </div>
+                                <script>
+                                    function updateStartDate(e) {
+                                        sessionStorage.setItem('bookStartDate',e.target.value);
+                                        calculateDates();
+                                    }
+                                </script>
                             </div>
                             <div class="col-6 form-group">
                                 <div class="date" id="date1" data-target-input="nearest">
-                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Dropoff Date"
-                                        data-target="#date1" data-toggle="datetimepicker" />
+                                    <input type="date" class="form-control p-4" placeholder="Pickup Date" id="bookEndDate" onchange="updateEndDate(event)"/>
+                                    Dropoff Date
                                 </div>
+                                <script>
+                                    function updateEndDate(e) {
+                                        sessionStorage.setItem('bookEndDate',e.target.value);
+                                        calculateDates();
+                                    }
+                                </script>
                             </div>
                         </div>
                         
@@ -278,8 +332,8 @@
                         <span id="payment_calc">
                             
                             $<p id="payment_rent" style="display: inline;">99</p> [<p id="vehicle_selected" style="display: inline;">None</p>]<br>
-                            <input id="payment_discount" type="text" class="custom-control-label" placeholder="Discount Code" onfocusout="checkdiscount()" style="display: inline;">
-                            <br>
+                            <p id="rental_days" style="display: inline;">x</p> day(s)<br>
+                            <input id="payment_discount" type="text" class="custom-control-label" placeholder="Discount Code" onfocusout="checkdiscount()" style="display: inline;"><br>
                             $<p id="payment_subtotal" style="display: inline;">99</p> [Sub Total]<br>
                             <p id="payment_tax" style="display: inline;">8.25</p>% [Tax]<br>
                             $<p id="payment_total" style="display: inline;">107.16</p> [Estimated Total]
