@@ -10,8 +10,7 @@
          "mileage": "17 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Coupe",
-         "serial" : 0
+         "type": "Coupe"
  
      },{ 
          "img" : "img/carlist/mercedes_benz_c300.png",
@@ -23,8 +22,7 @@
          "mileage": "18 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Coupe",
-         "serial" : 1
+         "type": "Coupe"
      },{ 
          "img" : "img/carlist/audi_r8.png",
          "manufacturer" : "Audi",
@@ -35,8 +33,7 @@
          "mileage": "16 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Sports Car",
-         "serial" : 2
+         "type": "Sports Car"
      },{ 
          "img" : "img/carlist/audi_q3.png",
          "manufacturer" : "Audi",
@@ -47,8 +44,7 @@
          "mileage": "25 MPG",
          "quantity": "",
          "tag": "",
-         "type": "SUV",
-         "serial" : 3
+         "type": "SUV"
      },{ 
          "img" : "img/carlist/mercedes_benz_c350.png",
          "manufacturer" : "Mercedes Benz",
@@ -59,8 +55,7 @@
          "mileage": "27 MPG",
          "quantity": "",
          "tag": "",
-         "type": "Coupe",
-         "serial" : 4
+         "type": "Coupe"
      }
      ,{ 
          "img" : "img/carlist/chevrolet_silverado.png",
@@ -460,9 +455,56 @@
                 "year": 2011,
                 "color": "blue"
             }]
-
-    }
-    
-    
+    },
+    "Discounts":
+    [
+        {
+           
+        "GET10OFF": {
+            "Discount": "10"
+        },
+        "GET25OFF": {
+            "Discount": "25"
+        },
+        "GET50OFF": {
+            "Discount": "50"
+        },
+        "GET75OFF": {
+            "Discount": "75"
+        },
+        "FALL20": {
+            "Discount": "20"
+        },
+        "VETERAN": {
+            "Discount": "40"
+        },
+        "CMAS30": {
+            "Discount": "30"
+        } 
+        }
+    ],
+    "Orders":
+        {
+        "order1":
+        [{
+            "name": "",
+            "email": "",
+            "phone": "",
+            "car serial": "",
+            "discount": "",
+            "total price": ""
+          
+        }],
+        "order2":
+        [{
+            "name": "",
+            "email": "",
+            "phone": "",
+            "car serial": "",
+            "discount": "",
+            "total price": ""
+        
+        }]
+        }
  }
  
