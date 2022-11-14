@@ -18,14 +18,14 @@ var firebaseConfig = {
 //const app = initializeApp(firebaseConfig);
 
 function writeDB(){
-    var order = admin.database().ref('/Orders/order1')
+    var order = admin.database().ref('/Orders/order1/0')
     var up = {};
-    up["0"] = {
-        name: "Test",
-        email: "test@email.com",
-        phone: "1800agileauto",
+    up = {
         carSerial: "0",
         discount: "CMAS30",
+        email: "test@email.com",
+        name: "Test",
+        phone: "1800agileauto",
         totalPrice: "108.23"
     };
  //   const db = getDatabase(app);
