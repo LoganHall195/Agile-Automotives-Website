@@ -32,8 +32,20 @@
             var bookThis = JSON.parse(sessionStorage.bookThis);
             document.getElementById("bookThisCar").textContent = bookThis.manufacturer + ' ' + bookThis.model;
             document.getElementById("bookThisPrice").textContent = bookThis.price;
-            
+            document.getElementById("bookThisImg").src = bookThis.img;
+            document.getElementById("payment_rent").textContent = bookThis.price;
+            document.getElementById("payment_subtotal").textContent = bookThis.price; // Wipe & ignore discount code
+            document.getElementById("payment_total").textContent = (document.getElementById("payment_subtotal").textContent*1.0825).toFixed(2); //Apply Tax
+            document.getElementById("vehicle_selected").textContent = sessionStorage.choosenSerial;
         }
+    </script>
+    <script>
+        $(window).on('storage',function(e){ //Do this every time session storage is updated
+            if(e.originalEvent.storageArea===sessionStorage){
+                document.getElementById("vehicle_selected").textContent = sessionStorage.choosenSerial;
+            } 
+            // else, event is caused by an update to localStorage, ignore it
+        });
     </script>
 </head>
 
@@ -187,10 +199,10 @@
     <!-- Detail Start -->
     <div class="container-fluid pt-5">
         <div class="container pt-5 pb-3">
-            <h1 id="bookThisCar" class="display-4 text-uppercase mb-5">Mercedes Benz R3</h1>
+            <h1 id="bookThisCar" class="display-4 text-uppercase mb-5">No Car Selected</h1>
             <div class="row align-items-center pb-2">
                 <div class="col-lg-6 mb-4">
-                    <img class="img-fluid" src="img/bg-banner.jpg" alt="">
+                    <img id="bookThisImg" class="img-fluid" src="img/bg-banner.jpg" alt="">
                 </div>
                 <div class="col-lg-6 mb-4">
                     <h4 class="mb-2" style="display: inline;">$</h4><h4 id="bookThisPrice" class="mb-2" style="display: inline;"></h4><h4 class="mb-2" style="display: inline;">/Day</h4>
@@ -207,83 +219,8 @@
                 </div>
             </div>
             <!---Listings Per Car--->
-            <div id="mercedes_benz_r3" name="vehicle_instances">
-                <!---Entry 1--->
-                <div id="entry_1">
-                    <input type="radio" id="ExSeRiAl1" name="vehicle_serial"> 
-                    &emsp;
-                    <span>
-                        <i class="fa fa-car text-primary mr-2"></i>
-                        <span>Year: 2015</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-road text-primary mr-2"></i>
-                        <span>Available: Now</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-eye text-primary mr-2"></i>
-                        <span>Color: Blue</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-cogs text-primary mr-2"></i>
-                        <span>ExSeRiAl1</span>
-                    </span>
-                    <br><br>
-                </div>
-                <!---Entry 2--->
-                <div id="entry_2"> 
-                    <input type="radio" id="ExSeRiAl2" name="vehicle_serial">
-                    &emsp;
-                    <span>
-                        <i class="fa fa-car text-primary mr-2"></i>
-                        <span>Year: 2015</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-road text-primary mr-2"></i>
-                        <span>Available: Now</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-eye text-primary mr-2"></i>
-                        <span>Color: Red</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-cogs text-primary mr-2"></i>
-                        <span>ExSeRiAl2</span>
-                    </span>
-                    <br><br>
-                </div>
-                <!---Entry 3--->
-                <div id="entry_3">
-                    <input type="radio" id="ExSeRiAl3" name="vehicle_serial">
-                    &emsp;
-                    <span>
-                        <i class="fa fa-car text-primary mr-2"></i>
-                        <span>Year: 2015</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-road text-primary mr-2"></i>
-                        <span>Available: Now</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-eye text-primary mr-2"></i>
-                        <span>Color: Black</span>
-                    </span>
-                    &emsp;
-                    <span>
-                        <i class="fa fa-cogs text-primary mr-2"></i>
-                        <span>ExSeRiAl3</span>
-                    </span>
-                    <br><br>
-                </div>
-            </div>
+            <iframe frameborder="0" style="height:100%px;width:100%; overflow: hidden;" src="inventory.html" id="inv_iframe">
+            </iframe>
         </div>
     </div>
     <!-- Detail End -->
@@ -340,10 +277,10 @@
                         <h2 class="text-primary mb-4">Payment</h2>
                         <span id="payment_calc">
                             
-                            $<p id="payment_rent" style="display: inline;">99</p> [Selected Vehicle]<br>
+                            $<p id="payment_rent" style="display: inline;">99</p> [<p id="vehicle_selected" style="display: inline;">None</p>]<br>
                             <input id="payment_discount" type="text" class="custom-control-label" placeholder="Discount Code" onfocusout="checkdiscount()" style="display: inline;">
                             <br>
-                            <p style="display: inline;">$99</p> [Sub Total]<br>
+                            $<p id="payment_subtotal" style="display: inline;">99</p> [Sub Total]<br>
                             <p id="payment_tax" style="display: inline;">8.25</p>% [Tax]<br>
                             $<p id="payment_total" style="display: inline;">107.16</p> [Estimated Total]
 
