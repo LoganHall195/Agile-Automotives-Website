@@ -7,10 +7,39 @@
 </head>
 <body>
     <div>
-        <h1>Hello World 3<h1>
+        <h1>Hello World 4<h1>
     </div>
+    <script>
+        const functions = require("firebase-functions");
+        const admin = require("firebase-admin");
+        admin.initializeApp();
 
-    <script>type = "module", src ="js/orders.js"</script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyAKGYcsh-b050TlfBEZSoPdAhCD_P5zxC8",
+            authDomain: "softwaree-group7.firebaseapp.com",
+            projectId: "softwaree-group7",
+            storageBucket: "softwaree-group7.appspot.com",
+            messagingSenderId: "983507508483",
+            appId: "1:983507508483:web:d9ca8d329ac6142443dd36",
+            measurementId: "G-SQ2B4TL68L",
+            databaseURL: "https://softwaree-group7-default-rtdb.firebaseio.com",
+        };
+        
+        function writeDB(){
+            var order = admin.database().ref('"https://softwaree-group7-default-rtdb.firebaseio.com/Orders/order1/0');
+            var up = {};
+            up[carSerial] = "0";
+            up[discount] = "CMAS30";
+            up[email] = "test@email.com";
+            up[name] = "Test";
+            up[phone] = "1800agileauto";
+            up[totalPrice] =  "108.23";
+            
+       
+        return order.update(up);
+}
+    </script>
+    <!-- <script>type = "module", src ="js/orders.js"</script> -->
 </body>
 
 </html>
