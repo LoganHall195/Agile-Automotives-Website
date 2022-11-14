@@ -30,8 +30,9 @@
     
     <script>
         function bookThis(key) {
-            $.getJSON("https://softwaree-group7-default-rtdb.firebaseio.com/Cars.json", function(data) {
+            $.getJSON("https://softwaree-group7-default-rtdb.firebaseio.com/Cars.json", function(data) { //Connects to booking.html
                 sessionStorage.setItem("bookThis", JSON.stringify(data[key]));
+                sessionStorage.setItem("bookThisKey", JSON.stringify(key));
             });
         }
     </script>
@@ -52,7 +53,7 @@
                         $.each(data, function (key, value) {
                             // CONSTRUCTION OF ROWS HAVING
                             // DATA FROM JSON OBJECT
-
+                            
                             car+= '<div id=\"car_'+key+'\" ';
                             car+= 'class=\"col-lg-4 col-md-6 mb-2 ';
                             

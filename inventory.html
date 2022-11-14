@@ -1,0 +1,89 @@
+<html lang="en">
+  
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+    
+    <!-- INCLUDING JQUERY-->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- Favicon -->
+      <link href="img/favicon.ico" rel="icon">
+
+      <!-- Google Web Fonts -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Rubik&display=swap" rel="stylesheet"> 
+  
+      <!-- Font Awesome -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+  
+      <!-- Libraries Stylesheet -->
+      <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+      <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  
+      <!-- Customized Bootstrap Stylesheet -->
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+  
+      <!-- Template Stylesheet -->
+      <link href="css/style.css" rel="stylesheet">
+      <script>
+        function bookThis(serial) {
+            sessionStorage.setItem("choosenSerial", serial);
+        }
+        </script>
+    <script>
+        $(document).ready(function () {
+            $.getJSON( "https://softwaree-group7-default-rtdb.firebaseio.com/Inventory.json", function( data ) {
+                var serial = sessionStorage.getItem("bookThisKey");
+                var list = data[Object.keys(data)[serial]];
+                    for(var i=0; i<list.length; i++)
+                    {
+                        var color = JSON.stringify(list[i].color);
+                        var year = JSON.stringify(list[i].year);
+                        display.innerHTML+=(
+                        '<div id="entry_1">'
+                        +'<input type="radio" id="ExSeRiAl'+i
+                        +'" name="vehicle_serial" onClick="bookThis(this.id)"> '
+                        +'&emsp;'
+                        +'<span>'
+                        +'<i class="fa fa-car text-primary mr-2"></i>'
+                        +'<span>Year: '
+                        +year
+                        +'</span>'
+                        +'</span>'
+                        +'&emsp;'
+                        +'<span>'
+                        +'<i class="fa fa-road text-primary mr-2"></i>'
+                        +'<span>Available: Now</span>'
+                        +'</span>'
+                        +'&emsp;'
+                        +'<span>'
+                        +'<i class="fa fa-eye text-primary mr-2"></i>'
+                        +'<span>Color: '
+                        +color.replace(/['"]+/g, '').charAt(0).toUpperCase()+color.slice(2).replace(/['"]+/g, '')
+                        +'</span>'
+                        +'</span>'
+                        +'&emsp;'
+                        +'<span>'
+                        +'<i class="fa fa-cogs text-primary mr-2"></i>'
+                        +'<span>'
+                        +"ExSeRiAl"+i //Vehicle Serial
+                        +'</span>'
+                        +'</span>'
+                        +'<br><br>'
+                        +'</div>'
+                        );
+                    }
+                    $(document.getElementById(sessionStorage.choosenSerial)).prop("checked", true);
+            });
+            
+        });
+    </script>
+</head>
+  
+<body>
+    <section>
+        <div id="display"></div>
+    </section>
+</body>
+  
+</html>
