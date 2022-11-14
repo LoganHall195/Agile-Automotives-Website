@@ -15,13 +15,14 @@ const app = initializeApp(firebaseConfig);
 
 function writeDB(){
     const db = getDatabase(app);
-    set(ref(db, "Orders/order1"),
+    set(ref(db, "Orders/order1/0"),
     {
-        "name": "Test",
-        "email": "test@email.com",
-        "phone": "1800agileauto",
-        "car serial": "0",
-        "discount": "CMAS30",
-        "total price": "108.23"
+        name: "Test",
+        email: "test@email.com",
+        phone: "1800agileauto",
+        carSerial: "0",
+        discount: "CMAS30",
+        totalPrice: "108.23"
     }); 
+    return writeDB();
 }
