@@ -10,23 +10,7 @@
         <h1>Hello World<h1>
     </div>
 
-    <script>
-    const functions = require("@firebase-functions");
-    const admin = require("@firebase-admin");
-    admin.initializeApp();
-    var orders = admin.database().ref('/Orders');
-    var update = {};
-    update['order1'] = {
-        "name": "Test",
-        "email": "test@email.com",
-        "phone": "1800agileauto",
-        "car serial": "0",
-        "discount": "CMAS30",
-        "total price": "108.23"
-
-    };
-   
-    </script>
+    <script>type = "module", src ="js/orders.js"</script>
 </body>
 
 </html>
