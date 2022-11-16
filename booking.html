@@ -307,10 +307,12 @@
                     <div class="mb-5">
                         <div class="row">
                             <div class="col-6 form-group">
-                                <input type="text" class="form-control p-4" placeholder="Full Name" required="required">
+                                <input type="text" class="form-control p-4" placeholder="Full Name" required="required"
+                                        onkeyup="sessionStorage.setItem('full_name',this.value);"/>
                             </div>
                             <div class="col-6 form-group">
-                                <input type="text" class="form-control p-4" placeholder="Mobile Number" required="required">
+                                <input type="text" class="form-control p-4" placeholder="Mobile Number" required="required"
+                                        onkeyup="sessionStorage.setItem('phone_number',this.value);">
                             </div>
                         </div>
                         <div class="row" style="pointer-events:none">
@@ -373,15 +375,18 @@
                         <br><br>
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" name="payment" id="pay_paypal" onclick="setPaypal()">
+                                <input type="radio" name="payment" id="pay_paypal" onclick="setPaypal()" >
                                 <label for="pay_paypal">Paypal</label>
                                 <div style="display: none;" id="paypal_input">
-                                    <input type="text" placeholder="Paypal Email Address"/>
+                                    <input type="text" placeholder="Paypal Email Address" 
+                                            onkeyup="const regexExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+                                                    if(regexExp.test(this.value)){sessionStorage.setItem('paypal_account',this.value);}"/>
                                 </div>
                                 <script>
                                     function setPaypal(){
                                         document.getElementById("paypal_input").style.display = "block";
                                         document.getElementById("card_input").style.display = "none";
+                                        sessionStorage.setItem('payment_method',"paypal");
                                     }
                                 </script>
                             </div>
@@ -391,14 +396,18 @@
                                 <input type="radio" name="payment" id="pay_card" onclick="setCard()"/>
                                 <label for="pay_card">Debit/Credit Card</label>
                                 <div style="display: none;" id="card_input">
-                                    <input type="text" placeholder="Card Number" style="width: 200px;"/>
-                                    <input type="text" placeholder="Exp Date" style="width: 100px;"/>
-                                    <input type="text" placeholder="CVC" style="width: 50px;"/>
+                                    <input type="text" placeholder="Card Number" style="width: 200px;" 
+                                            onkeyup="if(this.value.length==16){sessionStorage.setItem('card_number',this.value);}"/>
+                                    <input type="text" placeholder="Exp Date" style="width: 100px;" 
+                                            onkeyup="if(this.value.length>=5 && 7>=this.value.length){sessionStorage.setItem('card_date',this.value);}"/>
+                                    <input type="text" placeholder="CVC" style="width: 50px;" 
+                                            onkeyup="if(this.value.length==3){sessionStorage.setItem('card_cvc',this.value);}"/>
                                 </div>
                                 <script>
                                     function setCard(){
                                         document.getElementById("paypal_input").style.display = "none";
                                         document.getElementById("card_input").style.display = "block"; 
+                                        sessionStorage.setItem('payment_method',"card");
                                     }
                                 </script>
                             </div>
@@ -406,7 +415,44 @@
                         <button class="btn btn-block btn-primary py-3" onclick="checkFields()">Reserve Now</button>
                         <script>
                             function checkFields(){
-                                
+                                if(sessionStorage.loggedin!="true"){
+                                    window.alert("Cannot reserve, user not logged in.");
+                                } else {
+                                    if(sessionStorage.full_name==undefined||sessionStorage.phone_number==undefined){
+                                        window.alert("Cannot reserve, personal details are not complete.");
+                                    } else {
+                                        if(sessionStorage.choosenSerial==undefined){
+                                            window.alert("Cannot reserve, choose car from available inventory.");
+                                        } else {
+                                            if(sessionStorage.bookStartDate==undefined||sessionStorage.bookStartDate==undefined){
+                                                window.alert("Cannot reserve, booking dates are not specified.");
+                                            } else {
+                                                if(((sessionStorage.payment_method==undefined) || (sessionStorage.payment_method=="paypal" && sessionStorage.paypal_account==undefined)) || (sessionStorage.payment_method=="card" && (sessionStorage.card_number==undefined || (sessionStorage.card_date==undefined || sessionStorage.card_cvc==undefined)))){
+                                                    window.alert("Cannot reserve, payment information is incomplete.");
+                                                } else { 
+                                                    window.alert("Success, order placed!"); //Send order to db 
+                                                    /*
+                                                    var bookThis = JSON.parse(sessionStorage.bookThis);
+
+                                                    // Send these to db
+                                                    let email = sessionStorage.loginEmail;
+                                                    let price = sessionStorage.bookingTotal;
+                                                    let make = bookThis.manufacturer;
+                                                    let model = bookThis.model;
+                                                    let serial = sessionStorage.choosenSerial;
+                                                    let bookStartDate = sessionStorage.bookStartDate;
+                                                    let bookEndDate = sessionStorage.bookEndDate;
+                                                    let payment_method = sessionStorage.payment_method;
+                                                    let paypal_email = sessionStorage.paypal_account;
+                                                    let card_number = sessionStorage.card_number;
+                                                    let card_date = sessionStorage.card_date;
+                                                    let card_cvc = sessionStorage.card_cvc;
+                                                    */
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         </script>
                     </div>
