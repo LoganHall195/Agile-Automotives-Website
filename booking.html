@@ -59,8 +59,9 @@
         $(window).on('storage',function(e){ //Do this every time session storage is updated
             if(e.originalEvent.storageArea===sessionStorage){
                 document.getElementById("vehicle_selected").textContent = sessionStorage.choosenSerial;
-                document.getElementById("payment_subtotal").text.content = (document.getElementById("payment_rent").textContent*sessionStorage.rentalDays)-(sessionStorage.discountAmount*sessionStorage.rentalDays);
+                document.getElementById("payment_subtotal").text.content = ((document.getElementById("payment_rent").textContent*sessionStorage.rentalDays)-(sessionStorage.discountAmount*sessionStorage.rentalDays)).toFixed(2);
                 document.getElementById("payment_total").textContent = (document.getElementById("payment_subtotal").textContent*1.0825).toFixed(2); //Apply Tax
+                sessionStorage.setItem("bookingTotal",document.getElementById("payment_total").textContent);
             } 
             // else, event is caused by an update to localStorage, ignore it
         });
@@ -85,8 +86,37 @@
             //To display the final no. of days (result)
             sessionStorage.setItem("rentalDays",Difference_In_Days);
             document.getElementById("rental_days").textContent = sessionStorage.rentalDays;
-            document.getElementById("payment_subtotal").textContent = (document.getElementById("payment_rent").textContent*sessionStorage.rentalDays)-(sessionStorage.discountAmount*sessionStorage.rentalDays);
+            document.getElementById("payment_subtotal").textContent = ((document.getElementById("payment_rent").textContent*sessionStorage.rentalDays)-(sessionStorage.discountAmount*sessionStorage.rentalDays)).toFixed(2);
             document.getElementById("payment_total").textContent = (document.getElementById("payment_subtotal").textContent*1.0825).toFixed(2); //Apply Tax
+            sessionStorage.setItem("bookingTotal",document.getElementById("payment_total").textContent);
+        }
+    </script>
+    <script>
+        function tryDiscount(){
+            var discountInput = document.getElementById("payment_discount").value; 
+            //window.alert(discountBox.value);
+            $.getJSON("https://softwaree-group7-default-rtdb.firebaseio.com/Discounts.json", function(data) { //Connects to booking.html
+                /*if(JSON.parse(data).includes(discountInput) > 0){ 
+                    console.log("Discount Code: ",discountInput," applied!"); 
+                } */
+                //if(Object.values(data).includes(discountInput)){ console.log("true") };  
+                const discountList = Object.values(data)[0];
+                var jsonArray = [];
+                for(var i in discountList){ jsonArray.push([i, discountList[i]]); }
+                const discountCodes = (jsonArray, n) => jsonArray.map(x => x[n]);
+                var discountColumn = discountCodes(jsonArray, 0)
+                if (discountColumn.includes(discountInput)){
+                    var columnKey = discountColumn.indexOf(discountInput);
+                    var discountAmount = JSON.parse(Object.values(jsonArray[columnKey][1]));
+                    sessionStorage.setItem("discountAmount", discountAmount.toString())
+
+                    document.getElementById("rental_days").textContent = sessionStorage.rentalDays;
+                    document.getElementById("payment_subtotal").textContent = ((document.getElementById("payment_rent").textContent*sessionStorage.rentalDays)-(sessionStorage.discountAmount*sessionStorage.rentalDays)).toFixed(2);
+                    document.getElementById("payment_total").textContent = (document.getElementById("payment_subtotal").textContent*1.0825).toFixed(2); //Apply Tax
+                    sessionStorage.setItem("bookingTotal",document.getElementById("payment_total").textContent);
+                }  
+                  
+            });
         }
     </script>
 </head>
@@ -333,7 +363,7 @@
                             
                             $<p id="payment_rent" style="display: inline;">99</p> [<p id="vehicle_selected" style="display: inline;">None</p>]<br>
                             <p id="rental_days" style="display: inline;">x</p> day(s)<br>
-                            <input id="payment_discount" type="text" class="custom-control-label" placeholder="Discount Code" onfocusout="checkdiscount()" style="display: inline;"><br>
+                            <input id="payment_discount" onkeyup="this.value = this.value.toUpperCase();" type="text" class="custom-control-label" placeholder="Discount Code" onfocusout="tryDiscount()" style="display: inline;"><br>
                             $<p id="payment_subtotal" style="display: inline;">99</p> [Sub Total]<br>
                             <p id="payment_tax" style="display: inline;">8.25</p>% [Tax]<br>
                             $<p id="payment_total" style="display: inline;">107.16</p> [Estimated Total]
@@ -343,17 +373,42 @@
                         <br><br>
                         <div class="form-group">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="pay_paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
+                                <input type="radio" name="payment" id="pay_paypal" onclick="setPaypal()">
+                                <label for="pay_paypal">Paypal</label>
+                                <div style="display: none;" id="paypal_input">
+                                    <input type="text" placeholder="Paypal Email Address"/>
+                                </div>
+                                <script>
+                                    function setPaypal(){
+                                        document.getElementById("paypal_input").style.display = "block";
+                                        document.getElementById("card_input").style.display = "none";
+                                    }
+                                </script>
                             </div>
                         </div>
                         <div class="form-group mb-4">
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="pay_card">
-                                <label class="custom-control-label" for="banktransfer">Debit/Credit Card</label>
+                                <input type="radio" name="payment" id="pay_card" onclick="setCard()"/>
+                                <label for="pay_card">Debit/Credit Card</label>
+                                <div style="display: none;" id="card_input">
+                                    <input type="text" placeholder="Card Number" style="width: 200px;"/>
+                                    <input type="text" placeholder="Exp Date" style="width: 100px;"/>
+                                    <input type="text" placeholder="CVC" style="width: 50px;"/>
+                                </div>
+                                <script>
+                                    function setCard(){
+                                        document.getElementById("paypal_input").style.display = "none";
+                                        document.getElementById("card_input").style.display = "block"; 
+                                    }
+                                </script>
                             </div>
                         </div>
-                        <button class="btn btn-block btn-primary py-3">Reserve Now</button>
+                        <button class="btn btn-block btn-primary py-3" onclick="checkFields()">Reserve Now</button>
+                        <script>
+                            function checkFields(){
+                                
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
@@ -413,7 +468,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 mb-5">
-                <h4 class="text-uppercase text-light mb-4">Usefull Links</h4>
+                <h4 class="text-uppercase text-light mb-4">Useful Links</h4>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Private Policy</a>
                     <a class="text-body mb-2" href="#"><i class="fa fa-angle-right text-white mr-2"></i>Term & Conditions</a>
