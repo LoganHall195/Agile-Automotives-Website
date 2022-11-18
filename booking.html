@@ -431,7 +431,7 @@
                                                     window.alert("Cannot reserve, payment information is incomplete.");
                                                 } else { 
                                                     window.alert("Success, order placed!"); //Send order to db 
-                                                    /*
+                                                    
                                                     var bookThis = JSON.parse(sessionStorage.bookThis);
 
                                                     // Send these to db
@@ -447,14 +447,48 @@
                                                     let card_number = sessionStorage.card_number;
                                                     let card_date = sessionStorage.card_date;
                                                     let card_cvc = sessionStorage.card_cvc;
-                                                    */
-                                                   
                                                     
+                                                   
+                                                    fetchRequest(email, price, make, model, serial, bookStartDate, bookEndDate, payment_method, paypal_email,
+                                                                card_number, card_date, card_cvc)
                                                 }
                                             }
                                         }
                                     }
                                 }
+                            }
+                        </script>
+                        <script>
+                            function fetchRequest(email, price, make, model, serial, bookStartDate, bookEndDate, payment_method, paypal_email,
+                                                card_number, card_date, card_cvc){
+                                const headers = new Headers()
+                                headers.append("Content-Type", "application/json")
+                
+                                const body = {
+                                    "email": email,
+                                    "price": price, 
+                                    "make": make, 
+                                    "model": model, 
+                                    "serial": serial, 
+                                    "bookStartDate": bookStartDate, 
+                                    "bookEndDate": bookEndDate, 
+                                    "payment_method": payment_method, 
+                                    "paypal_email": paypal_email,
+                                    "card_number": card_number, 
+                                    "card_date": card_date, 
+                                    "card_cvc": card_cvc
+                                }
+                
+                                const options = {
+                                method: "POST",
+                                headers,
+                                mode: "cors",
+                                body: JSON.stringify(body),
+                                }
+                                
+                                const fetchAddress = "https://eos4ij2e36ulfyp.m.pipedream.net/";
+
+                                fetch(fetchAddress+email, options)
                             }
                         </script>
                     </div>
