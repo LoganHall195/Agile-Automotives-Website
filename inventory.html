@@ -34,8 +34,14 @@
             var bookingCar = (window.parent.document.getElementById("bookThisCar").textContent.toLowerCase().replace(' ','_'))
             bookingImage="img/"+bookingImage.split('img/')[1].replace('.png', '');
             bookingImage+=("/colors/");
+            if(bookingImage.includes("convertible")){
+                bookingCar+=" convertible"
+            }
+            bookingCar=bookingCar.replace('-','');
+            bookingCar=bookingCar.replace(' ','_');
             bookingImage=bookingImage.replace(bookingCar+'/','');
             bookingImage+=bookingCar+'_';
+            console.log(bookingCar)
             if (entry_text.includes("Blue")){ bookingImage+=("blue");
             } else if (entry_text.includes("Yellow")){ bookingImage+=("yellow");
             } else if (entry_text.includes("Orange")){ bookingImage+=("orange");
